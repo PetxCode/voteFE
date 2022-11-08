@@ -8,16 +8,7 @@ const MainPage = () => {
   console.log(user);
   return (
     <div>
-      <div>Main Page</div>
-      <BUtton
-        type="submit"
-        bg="l"
-        onClick={() => {
-          setUser(null);
-        }}
-      >
-        Sign out
-      </BUtton>
+      <div>Header</div>
     </div>
   );
 };

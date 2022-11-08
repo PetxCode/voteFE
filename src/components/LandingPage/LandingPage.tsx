@@ -1,11 +1,13 @@
-import React from "react";
-import RegistrationPage from "../Auth/RegistrationPage";
+import Footer from "../Components/Footer/Footer";
+import HomeScreen from "../Components/HomeScreen";
+import Header from "../Header";
 
 const LandingPage = () => {
   return (
     <div>
-      LandingPage
-      <RegistrationPage />
+      <Header />
+      <HomeScreen />
+      <Footer />
     </div>
   );
 };

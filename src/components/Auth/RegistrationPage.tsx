@@ -74,15 +74,26 @@ const RegistrationPage = () => {
     await axios
       .post(newURL, formData, options)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Registeration successful",
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          navigate("/confirm");
-        });
+        if (res.data.message.http_code === 400) {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Registeration failed, Please upload your image",
+            showConfirmButton: false,
+            timer: 2500,
+          });
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Registeration successful",
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            navigate("/confirm");
+          });
+        }
+
         setLoading(false);
       })
       .catch((error) => {
@@ -103,7 +114,7 @@ const RegistrationPage = () => {
     <Container>
       {loading ? <LoadingState /> : null}
       <Wrapper>
-        <Card onSubmit={onSubmit}>
+        <Card onSubmit={onSubmit} type="multipart/form-data">
           <br />
 
           <LogoHolder to="/">
@@ -510,7 +521,7 @@ const LogoHolder = styled(Link)`
   align-items: center;
   text-decoration: none;
 `;
-const Card = styled.form`
+const Card = styled.form<{ type: string }>`
   width: 90%;
   height: 100%;
   /* display: none; */

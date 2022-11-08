@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 import LandingPage from "../LandingPage/LandingPage";
 import MainPage from "../Main/MainPage";
 import jwt_decode from "jwt-decode";
+import Header from "../Header";
 
 const PrivateRoute: React.FC<PropsWithChildren> = ({ children }) => {
   const user = useRecoilValue(users);
@@ -15,6 +16,7 @@ const PrivateRoute: React.FC<PropsWithChildren> = ({ children }) => {
 
   return user ? (
     <div>
+      <Header />
       <MainPage />
     </div>
   ) : (
