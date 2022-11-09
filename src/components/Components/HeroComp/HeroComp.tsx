@@ -8,7 +8,7 @@ const HeroComp = () => {
         {" "}
         <h5>Trusted By 55+ Organizations in NYCN</h5>
         <h1>
-          Easy Online Election <br />
+          Easy Online Election <Br />
           Excellence
         </h1>
         <p>
@@ -68,6 +68,10 @@ const HeroComp = () => {
 };
 
 export default HeroComp;
+
+const Br = styled.div`
+  margin-top: 2px;
+`;
 
 const Holding = styled.div`
   width: 95%;

@@ -24,6 +24,44 @@ const Header = () => {
     <>
       {show ? (
         <Container bx="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+          <Div>
+            <Logo src="/assets/logo.png" />
+            <Button bd="#000269" cl="#000269" bg="" to="/createOrganisation">
+              View Organisations
+            </Button>
+          </Div>
+          {user ? (
+            <div>
+              <ButtonData
+                bd=""
+                cl="white"
+                bg="#000269"
+                onClick={() => {
+                  setLogOut(null);
+                }}
+              >
+                Sign Out
+              </ButtonData>
+            </div>
+          ) : (
+            <div>
+              <NavHold>
+                {" "}
+                <Button bd="v" cl="white" bg="#000269" to="/createOrganisation">
+                  Add Organisation
+                </Button>
+                <Button bd="" cl="white" bg="#000269" to="/register">
+                  Get Started
+                </Button>
+                <Button bd="#000269" cl="black" bg="" to="/signin">
+                  Login
+                </Button>
+              </NavHold>
+            </div>
+          )}
+        </Container>
+      ) : (
+        <Container bx="">
           <Logo src="/assets/logo.png" />
           {user ? (
             <div>
@@ -41,6 +79,10 @@ const Header = () => {
           ) : (
             <div>
               <NavHold>
+                {" "}
+                <Button bd="v" cl="white" bg="#000269" to="/createOrganisation">
+                  Add Organisation
+                </Button>
                 <Button bd="" cl="white" bg="#000269" to="/register">
                   Get Started
                 </Button>
@@ -51,24 +93,17 @@ const Header = () => {
             </div>
           )}
         </Container>
-      ) : (
-        <Container bx="">
-          <Logo src="/assets/logo.png" />
-          <NavHold>
-            <Button bd="v" cl="white" bg="#000269" to="/register">
-              Get Started
-            </Button>
-            <Button bd="#000269" cl="black" bg="" to="/signin">
-              Login
-            </Button>
-          </NavHold>
-        </Container>
       )}
     </>
   );
 };
 
 export default Header;
+
+const Div = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
 const Container = styled.div<{ bx: string }>`
   display: flex;
@@ -103,8 +138,11 @@ const NavHold = styled.div`
 `;
 
 const Button = styled(Link)<{ bg: string; cl: string; bd: string }>`
+  margin: 0 5px;
+  line-height: 1;
+  text-align: center;
   text-decoration: none;
-  height: 35px;
+  height: 43px;
   width: 120px;
   display: flex;
   justify-content: center;

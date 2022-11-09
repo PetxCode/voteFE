@@ -80,7 +80,15 @@ const RegistrationPage = () => {
             icon: "error",
             title: "Registeration failed, Please upload your image",
             showConfirmButton: false,
-            timer: 2500,
+            timer: 3500,
+          });
+        } else if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 4000,
           });
         } else {
           Swal.fire({
@@ -99,12 +107,12 @@ const RegistrationPage = () => {
       .catch((error) => {
         Swal.fire({
           position: "center",
-          icon: "success",
-          title: "Registeration unsuccessful",
+          icon: "error",
+          title: `Error Occur: ${error}`,
           showConfirmButton: false,
           timer: 2500,
         }).then(() => {
-          navigate("/");
+          // navigate("/");
         });
         setLoading(false);
       });
@@ -204,9 +212,7 @@ const RegistrationPage = () => {
             type="submit"
             bg={myChecked ? "bg" : ""}
             disabled={!myChecked}
-            onClick={() => {
-              console.log("Hello", myChecked);
-            }}
+            onClick={() => {}}
           >
             Sign up
           </BUtton>

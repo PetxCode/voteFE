@@ -9,6 +9,7 @@ import RegistrationPage from "./Auth/RegistrationPage";
 import ResetPassword from "./Auth/ResetPassword";
 import SecondConfirmation from "./Auth/SecondConfirmation";
 import SigninPage from "./Auth/SignIn";
+import ViewOrganisation from "./Main/ViewOrganisation";
 
 const AuthComponent = () => {
   return (

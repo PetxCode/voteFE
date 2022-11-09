@@ -51,7 +51,6 @@ const SigninPage = () => {
       .post(newURL, value)
       .then((res) => {
         setUser(res.data.data);
-        console.log(user);
         Swal.fire({
           position: "center",
           icon: "success",
@@ -67,7 +66,7 @@ const SigninPage = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Login unsuccessful",
+          title: `Login unsuccessful: ${error}`,
           showConfirmButton: false,
           timer: 2500,
         }).then(() => {

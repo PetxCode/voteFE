@@ -2,13 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { users } from "../Global/GlobalState";
+import VoteScreen from "../Chart/VoteScreen";
+import { Route, Routes } from "react-router-dom";
+import ViewOrganisation from "./ViewOrganisation";
+import Header from "../Header";
 
 const MainPage = () => {
   const [user, setUser] = useRecoilState(users);
   console.log(user);
   return (
     <div>
-      <div>Header</div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<VoteScreen />} />
+        <Route path="/viewOrganisation" element={<ViewOrganisation />} />
+      </Routes>
     </div>
   );
 };

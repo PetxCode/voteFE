@@ -16,7 +16,6 @@ const PrivateRoute: React.FC<PropsWithChildren> = ({ children }) => {
 
   return user ? (
     <div>
-      <Header />
       <MainPage />
     </div>
   ) : (
