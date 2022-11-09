@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { users } from "./Global/GlobalState";
 import { useRecoilValue, useRecoilState } from "recoil";
+import jwt from "jwt-decode";
+
+interface iUser {
+  superAdmin: boolean;
+}
 
 const Header = () => {
   const [show, setShow] = React.useState(true);
 
   const user = useRecoilValue(users);
+
   const [logOut, setLogOut] = useRecoilState(users);
 
   const changeNavScroll = () => {
@@ -17,8 +23,12 @@ const Header = () => {
       setShow(false);
     }
   };
-
   window.addEventListener("scroll", changeNavScroll);
+  let token: iUser | undefined;
+
+  if (user) {
+    token = jwt(user.getToken);
+  }
 
   return (
     <>
@@ -26,9 +36,91 @@ const Header = () => {
         <Container bx="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
           <Div>
             <Logo src="/assets/logo.png" />
-            <Button bd="#000269" cl="#000269" bg="" to="/createOrganisation">
-              View Organisations
-            </Button>
+            {user ? (
+              <Div>
+                {" "}
+                <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
+                  View Organisations
+                </Button>
+                {token?.superAdmin ? (
+                  <div>
+                    <Button
+                      bd="#000269"
+                      cl="#000269"
+                      bg=""
+                      to="/createOrganisation"
+                    >
+                      Create Organisations
+                    </Button>
+                    <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
+                      Add Candidates
+                    </Button>
+                  </div>
+                ) : null}
+                <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
+                  Cast your Vote
+                </Button>
+              </Div>
+            ) : null}
+          </Div>
+
+          {user ? (
+            <div>
+              <ButtonData
+                bd=""
+                cl="white"
+                bg="#000269"
+                onClick={() => {
+                  setLogOut(null);
+                }}
+              >
+                Sign Out
+              </ButtonData>
+            </div>
+          ) : (
+            <div>
+              <NavHold>
+                {" "}
+                <Button bd="" cl="white" bg="#000269" to="/register">
+                  Get Started
+                </Button>
+                <Button bd="#000269" cl="black" bg="" to="/signin">
+                  Login
+                </Button>
+              </NavHold>
+            </div>
+          )}
+        </Container>
+      ) : (
+        <Container bx="">
+          <Div>
+            <Logo src="/assets/logo.png" />
+            {user ? (
+              <Div>
+                {" "}
+                <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
+                  View Organisations
+                </Button>
+                {token?.superAdmin ? (
+                  <div>
+                    <Button
+                      bd="#000269"
+                      cl="#000269"
+                      bg=""
+                      to="/createOrganisation"
+                    >
+                      Create Organisations
+                    </Button>
+                    <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
+                      Add Candidates
+                    </Button>
+                  </div>
+                ) : null}
+                <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
+                  Cast your Vote
+                </Button>
+              </Div>
+            ) : null}
           </Div>
           {user ? (
             <div>
@@ -47,42 +139,6 @@ const Header = () => {
             <div>
               <NavHold>
                 {" "}
-                <Button bd="v" cl="white" bg="#000269" to="/createOrganisation">
-                  Add Organisation
-                </Button>
-                <Button bd="" cl="white" bg="#000269" to="/register">
-                  Get Started
-                </Button>
-                <Button bd="#000269" cl="black" bg="" to="/signin">
-                  Login
-                </Button>
-              </NavHold>
-            </div>
-          )}
-        </Container>
-      ) : (
-        <Container bx="">
-          <Logo src="/assets/logo.png" />
-          {user ? (
-            <div>
-              <ButtonData
-                bd=""
-                cl="white"
-                bg="#000269"
-                onClick={() => {
-                  setLogOut(null);
-                }}
-              >
-                Sign Out
-              </ButtonData>
-            </div>
-          ) : (
-            <div>
-              <NavHold>
-                {" "}
-                <Button bd="v" cl="white" bg="#000269" to="/createOrganisation">
-                  Add Organisation
-                </Button>
                 <Button bd="" cl="white" bg="#000269" to="/register">
                   Get Started
                 </Button>
@@ -122,6 +178,7 @@ const Logo = styled.img`
   margin-left: 50px;
   object-fit: contain;
   color: black;
+  margin-right: 20px;
 
   @media screen and (max-width: 600px) {
     margin-left: 10px;

@@ -6,6 +6,7 @@ import VoteScreen from "../Chart/VoteScreen";
 import { Route, Routes } from "react-router-dom";
 import ViewOrganisation from "./ViewOrganisation";
 import Header from "../Header";
+import Footer from "../Components/Footer/Footer";
 
 const MainPage = () => {
   const [user, setUser] = useRecoilState(users);
@@ -13,10 +14,8 @@ const MainPage = () => {
   return (
     <div>
       <Header />
-      <Routes>
-        <Route path="/" element={<VoteScreen />} />
-        <Route path="/viewOrganisation" element={<ViewOrganisation />} />
-      </Routes>
+      <VoteScreen />
+      <Footer />
     </div>
   );
 };

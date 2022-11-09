@@ -19,8 +19,31 @@ interface iUser {
   superAdmin?: boolean;
 }
 
+interface iOrganisation {
+  organisationName?: string;
+  email: string;
+}
+
 export const users = atom({
   key: "users",
   default: {} as iUser | null,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const organisation = atom({
+  key: "organisation",
+  default: [] as Array<iOrganisation> | null,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const organisationMembers = atom({
+  key: "organisationMembers",
+  default: [] as Array<iOrganisation> | null,
+  effects_UNSTABLE: [persistAtom],
+});
+
+export const candidate = atom({
+  key: "candidate",
+  default: [] as Array<iOrganisation> | null,
   effects_UNSTABLE: [persistAtom],
 });

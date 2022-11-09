@@ -22,8 +22,6 @@ const AuthComponent = () => {
 
         <Route path="/redirectForget" element={<ForgetRed />} />
 
-        <Route path="/createOrganisation" element={<CreateOrganisation />} />
-
         <Route path="/confirm" element={<EmailConfirmationPage />} />
         <Route path="/api/user/:id/token" element={<SecondConfirmation />} />
         <Route path="/api/user/:id/verify" element={<AdminConfirm />} />

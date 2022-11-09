@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { FaChalkboardTeacher } from "react-icons/fa";
+import { CgOrganisation } from "react-icons/cg";
+import { MdHowToVote } from "react-icons/md";
 import ChartHold from "./ChartHold";
 
 const VoteScreen = () => {
@@ -13,32 +15,25 @@ const VoteScreen = () => {
         </SubHead>
         <TopBox>
           <InnerBox>
-            <IconHold>
-              <FaChalkboardTeacher color="#fff" />
+            <IconHold bg="#000269">
+              <CgOrganisation color="#fff" />
             </IconHold>
-            <span> 2040 </span>
-            <small>Total vote</small>
+            <span> 55 </span>
+            <small>Total Organisation</small>
           </InnerBox>
           <InnerBox>
-            <IconHold>
-              <FaChalkboardTeacher color="#fff" />
+            <IconHold bg="green">
+              <MdHowToVote color="#fff" />
             </IconHold>
-            <span> 2040 </span>
-            <small>Total vote</small>
+            <span> 21 </span>
+            <small>Total Candidates</small>
           </InnerBox>
           <InnerBox>
-            <IconHold>
+            <IconHold bg="red">
               <FaChalkboardTeacher color="#fff" />
             </IconHold>
-            <span> 2040 </span>
-            <small>Total vote</small>
-          </InnerBox>
-          <InnerBox>
-            <IconHold>
-              <FaChalkboardTeacher color="#fff" />
-            </IconHold>
-            <span> 2040 </span>
-            <small>Total vote</small>
+            <span> 125 </span>
+            <small>Total Delegates</small>
           </InnerBox>
         </TopBox>
         <ChartHold />
@@ -117,12 +112,12 @@ const InnerBox = styled.div`
   }
 `;
 
-const IconHold = styled.div`
+const IconHold = styled.div<{ bg: string }>`
   margin: 0 10px;
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: green;
+  background-color: ${({ bg }) => bg};
   display: flex;
   justify-content: center;
   align-items: center;
