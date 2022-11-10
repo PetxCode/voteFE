@@ -16,22 +16,82 @@ const Poll = () => {
     <Container>
       <Wrapper>
         <PollCon>
-          <Polltitle>&nbsp; &nbsp; &nbsp; &nbsp;Poll.</Polltitle>
+          <Polltitle>&nbsp; &nbsp; &nbsp; Co-ordinator Candidate.</Polltitle>
           <Scrollmy>
             <YouthCondinator />
+          </Scrollmy>
+        </PollCon>
+
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
             <DeputyCordinator />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>&nbsp; &nbsp; &nbsp;Socail Secretary.</Polltitle>
+          <Scrollmy>
             <Generalsecretary />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
             <AssistanceGenSec />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
             <PublicRelationsOfficer />
-            <SocialSecretary />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
+            <YouthCondinator />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
             <Treasurer />
           </Scrollmy>
         </PollCon>
-        <TotalView>
-          <CartTotal>
-            <Bar />
-          </CartTotal>
-        </TotalView>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
+            <SocialSecretary />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
+            <YouthCondinator />
+          </Scrollmy>
+        </PollCon>
+        <PollCon>
+          <Polltitle>
+            &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
+          </Polltitle>
+          <Scrollmy>
+            <YouthCondinator />
+          </Scrollmy>
+        </PollCon>
       </Wrapper>
     </Container>
   );
@@ -54,8 +114,8 @@ const Loading = styled.div`
 
 const Scrollmy = styled.div`
   width: 100%;
-  height: 500px;
-  overflow-y: auto;
+  height: auto;
+  padding-bottom: 10px;
 `;
 
 const Top = styled.div`
@@ -213,13 +273,14 @@ const CartTotal = styled.div`
 `;
 
 const PollCon = styled.div`
-  width: 600px;
-  min-height: 90vh;
+  width: 350px;
 
+  height: auto;
   border-radius: 10px;
 
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
+  margin-left: 20px;
+  margin-top: 20px;
   @media screen and (max-width: 600px) {
     width: 90%;
     height: auto;
@@ -236,7 +297,6 @@ const TotalView = styled.div`
     width: 90%;
   }
 `;
-
 const Wrapper = styled.div`
   width: 1200px;
   min-height: 100vh;

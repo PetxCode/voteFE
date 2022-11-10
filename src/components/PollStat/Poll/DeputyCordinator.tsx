@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' 
 import styled from "styled-components"
 import { IoIosArrowDropdownCircle } from 'react-icons/io';
 import * as yup from "yup"
@@ -6,9 +6,9 @@ import {useForm} from "react-hook-form"
 import { yupResolver } from "@hookform/resolvers/yup"
 import axios from "axios"
 
-const YouthCondinator = () =>
+const DeputyCordinator = () =>
 {
-      const [isActive, setIsActive] = React.useState<boolean>(false)
+       const [isActive, setIsActive] = React.useState<boolean>(false)
       const schema = yup.object().shape({
         president: yup.string().required("you've vote yet!!!🚫🚫"),
     })
@@ -23,14 +23,15 @@ const YouthCondinator = () =>
     })
   return (
       <div>
-            <Divc>
+           <Divc>
                       <Mydrop>
                           <Catcon>
-                              Youth Co-ordinator <span><IoIosArrowDropdownCircle /></span>
+                              Deputy Co-ordinator <span><IoIosArrowDropdownCircle /></span>
                           </Catcon>
                           <Top>Leading Candidate</Top>
-                          <TopCon>
-                              <ImgCon src="/assets/ballot-safe.png" />
+                           <Sin>
+             <TopCon>
+                              <ImgCon src="/assets/profilephoto.jfif" />
                               <Namepo>
                                   Anyamah Edwin
                                  <Loading>
@@ -41,8 +42,22 @@ const YouthCondinator = () =>
                                 </Loading>
                               </Namepo>
                           </TopCon>
+                          <TopCon>
+                              <ImgCon src="/assets/2.jpg" />
+                              <Namepo>
+                                  David Banks jude
+                                 <Loading>
+                              <Dbar1></Dbar1>
+                              <pre>59%</pre>
+
+                              
+                                </Loading>
+                              </Namepo>
+                          </TopCon>
+
+          </Sin>
                       </Mydrop>
-                       
+                     
                         <DropCon>
                           <form onSubmit={voteNow}>
                       <DropItem>
@@ -105,12 +120,22 @@ const YouthCondinator = () =>
                         </DropItem>
                        </form>
                         </DropCon>
+                     
+                     
+                      
                   </Divc>
     </div>
   )
 }
 
-export default YouthCondinator
+export default DeputyCordinator
+
+const Sin = styled.div`
+display:flex;
+width:100%;
+display:flex;
+justify-content:space-between;
+`
 
 const Button = styled.button`
   width:100px;
@@ -149,9 +174,15 @@ color:red;
 margin-top:-5px;
 `
 const Dbar = styled.div`
-width:80px;
+width:60px;
 height:7px;
 background-color:green;
+border-radius:6px;
+`
+const Dbar1 = styled.div`
+width:60px;
+height:7px;
+background-color:#f9a603;
 border-radius:6px;
 `
 
@@ -169,7 +200,7 @@ const Loading = styled.div`
 const Namepo = styled.div`
 display:flex;
 flex-direction:column;
-
+font-size:12px;
 margin-left:5px;
 font-weight:600;
 margin-top:-2px;
@@ -254,7 +285,7 @@ display:flex;
 
 
 const Divc = styled.div`
-width:90%;
+width:87%;
 margin:10px auto;
 
 
@@ -262,7 +293,7 @@ position:relative;
 
 
 @media screen and (max-width: 800px) {
-    width:85%;
+    width:90%;
    
     
     
@@ -272,7 +303,7 @@ position:relative;
 const DropCon  = styled.div`
 // position:absolute;
 top:110%;
-padding:17px;
+padding:9px;
 background-color:whitesmoke;
 font-width:700;
 color:#333;
@@ -291,7 +322,7 @@ animation: sweep .5s ease-in-out;
 
 
 @media screen and (max-width: 800px) {
-   padding:7px;
+   padding:8px;
    
     
     

@@ -17,7 +17,7 @@ import Header from "./components/Header";
 import AddCandidates from "./components/Main/AddCandidates";
 import MainPage from "./components/Main/MainPage";
 import ViewOrganisation from "./components/Main/ViewOrganisation";
-import Poll from "./components/PollData/Poll/Poll";
+import Poll from "./components/PollStat/Poll/Poll";
 import ScrollToTop from "./ScrollToTop";
 
 const App: React.FC = () => {
