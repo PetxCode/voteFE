@@ -36,7 +36,7 @@ const Header = () => {
   let token: iUser | undefined;
 
   if (user) {
-    token = user?.superAdmin;
+    token = jwt(user.getToken);
   }
 
   return (
@@ -49,10 +49,10 @@ const Header = () => {
               <Div1>
                 {" "}
                 <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
-                  View Organisations
+                  Viewing Organisations
                 </Button>
                 {token?.superAdmin ? (
-                  <div>
+                  <Div>
                     <Button
                       bd="#000269"
                       cl="#000269"
@@ -64,7 +64,7 @@ const Header = () => {
                     <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
                       Add Candidates
                     </Button>
-                  </div>
+                  </Div>
                 ) : null}
                 <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
                   Cast your Vote
@@ -115,7 +115,7 @@ const Header = () => {
                   View Organisations
                 </Button>
                 {token?.superAdmin ? (
-                  <div>
+                  <Div>
                     <Button
                       bd="#000269"
                       cl="#000269"
@@ -127,7 +127,7 @@ const Header = () => {
                     <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
                       Add Candidates
                     </Button>
-                  </div>
+                  </Div>
                 ) : null}
                 <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
                   Cast your Vote
@@ -211,6 +211,7 @@ const Container = styled.div<{ bx: string }>`
   z-index: 1;
   box-shadow: ${(props) => props.bx};
   background-color: #f3f8fe;
+  font-size: 12px;
 `;
 const Logo = styled.img`
   height: 50px;

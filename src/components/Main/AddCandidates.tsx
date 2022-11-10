@@ -46,17 +46,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -78,17 +91,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -110,17 +136,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -142,17 +181,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -174,17 +226,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -213,17 +278,30 @@ const AddCandidates = () => {
     await axios
       .post(newURL)
       .then((res) => {
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: `${res.data.message}`,
-          showConfirmButton: false,
-          timer: 2500,
-        }).then(() => {
-          //   navigate("/");
-        });
-        setLoading(false);
-        setSearchUser("");
+        if (res.data.message.split("r")[0] === "You can't ") {
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+        } else {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${res.data.message}`,
+            showConfirmButton: false,
+            timer: 2500,
+          }).then(() => {
+            //   navigate("/");
+          });
+          setLoading(false);
+          setSearchUser("");
+        }
       })
       .catch((error) => {
         Swal.fire({
@@ -370,7 +448,9 @@ const AddCandidates = () => {
                     <Butt onClick={presidentPost}>Add To President</Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : vice ? (
             <div>
@@ -403,7 +483,9 @@ const AddCandidates = () => {
                     </Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : secretary ? (
             <div>
@@ -434,7 +516,9 @@ const AddCandidates = () => {
                     <Butt onClick={secretaryPost}>Add To secretary</Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : social ? (
             <div>
@@ -467,7 +551,9 @@ const AddCandidates = () => {
                     </Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : pro ? (
             <div>
@@ -498,7 +584,9 @@ const AddCandidates = () => {
                     <Butt onClick={proPost}>Add To PRO</Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : legal ? (
             <div>
@@ -529,7 +617,9 @@ const AddCandidates = () => {
                     <Butt onClick={legalPost}>Add To Legal</Butt>
                   </Card>
                 </div>
-              ) : null}
+              ) : (
+                <User>No User Found</User>
+              )}
             </div>
           ) : null}
           <br />
@@ -545,6 +635,12 @@ const AddCandidates = () => {
 };
 
 export default AddCandidates;
+
+const User = styled.div`
+  text-align: center;
+  font-weight: bold;
+  color: #000269;
+`;
 
 const Mail = styled.div`
   font-size: 10px;

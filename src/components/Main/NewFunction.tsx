@@ -1,65 +1,49 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { organisationMembers } from "../Global/GlobalState";
-import { useRecoilState } from "recoil";
 
 interface props {
-  //   organisationName?: {};
-  //   president?: {}[];
-  //   vicePresident?: {}[];
-  //   legal?: {}[];
-  //   pro?: {}[];
-  //   secretary?: {}[];
-  //   socialSecretary?: {}[];
-  //   voter?: {}[];
-  //   orgName?: string;
-  //   orgEmail?: string;
-  //   fullName?: string;
-  //   email: string;
-  //   password: string;
-  //   image?: string;
-  //   voteCode?: string;
-  //   token?: string;
-  //   verified?: boolean;
-  //   superAdmin?: boolean;
-  //   _doc: {};
+  organisationName?: string;
+
   _id: string;
 }
 const url: string = "http://localhost:2233";
 
 const NewFunction: React.FC<props> = ({ _id }) => {
-  const [orgMember, setOrgMember] = useRecoilState(organisationMembers);
+  const [orgMember, setOrgMember] = useState([]);
 
   const getOrganisationMembers = async () => {
     const newURL: string = `${url}/api/organisation/${_id}/view`;
-    console.log(newURL);
+
     await axios.get(newURL).then((res) => {
-      console.log("data: ", res.data.data.user);
       setOrgMember(res.data.data.user);
     });
   };
-
-  //   console.log("data: ", orgMember);
 
   useEffect(() => {
     getOrganisationMembers();
   }, []);
   return (
     <div>
-      <MembersCard>
+      <Div>
         {orgMember.map((props: any) => (
           <Profile key={props._id}>
             <Image src={props.image} />
             <ProfileName>{props.fullName}</ProfileName>
           </Profile>
         ))}
-      </MembersCard>
+      </Div>
     </div>
   );
 };
 
 export default NewFunction;
+
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 const Image = styled.img`
   height: 60px;

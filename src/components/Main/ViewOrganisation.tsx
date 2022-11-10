@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { organisation, organisationMembers } from "../Global/GlobalState";
+import { organisation } from "../Global/GlobalState";
 import { useRecoilState } from "recoil";
 import NewFunction from "./NewFunction";
 
@@ -16,6 +16,9 @@ const ViewOrganisation = () => {
     });
   };
 
+  useEffect(() => {
+    getOrgansation();
+  }, []);
   return (
     <Container>
       <Text>
@@ -27,7 +30,10 @@ const ViewOrganisation = () => {
             <Name>{props.organisationName}</Name>
             <Members>Registered Members</Members>
 
-            <NewFunction _id={props._id} />
+            <NewFunction
+              _id={props._id}
+              organisationName={props.organisationName}
+            />
           </Card>
         ))}
       </Wrapper>
@@ -36,6 +42,37 @@ const ViewOrganisation = () => {
 };
 
 export default ViewOrganisation;
+
+const Image = styled.img`
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+  background-color: orange;
+  object-fit: cover;
+  border: 2px solid #000269;
+`;
+
+const ProfileName = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1;
+  margin-top: 10px;
+`;
+
+const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 10px;
+`;
+
+const MembersCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 95%;
+`;
 
 const Text = styled.div`
   text-align: center;
