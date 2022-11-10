@@ -1,8 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { users } from "./Global/GlobalState";
 import { useRecoilValue, useRecoilState } from "recoil";
+import { AiOutlineMenuFold } from "react-icons/ai";
+import SideBarComp from "./SideBarComp";
 import jwt from "jwt-decode";
 
 interface iUser {
@@ -10,10 +12,11 @@ interface iUser {
 }
 
 const Header = () => {
+  const navigate = useNavigate();
   const [show, setShow] = React.useState(true);
+  const [sideShow, setSideShow] = React.useState(false);
 
   const user = useRecoilValue(users);
-
   const [logOut, setLogOut] = useRecoilState(users);
 
   const changeNavScroll = () => {
@@ -23,11 +26,17 @@ const Header = () => {
       setShow(false);
     }
   };
+
+  const toggleSideBar = () => {
+    setSideShow(!sideShow);
+  };
+
   window.addEventListener("scroll", changeNavScroll);
+
   let token: iUser | undefined;
 
   if (user) {
-    token = jwt(user.getToken);
+    token = user?.superAdmin;
   }
 
   return (
@@ -37,7 +46,7 @@ const Header = () => {
           <Div>
             <Logo src="/assets/logo.png" />
             {user ? (
-              <Div>
+              <Div1>
                 {" "}
                 <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
                   View Organisations
@@ -60,7 +69,70 @@ const Header = () => {
                 <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
                   Cast your Vote
                 </Button>
-              </Div>
+              </Div1>
+            ) : null}
+          </Div>
+          {user ? (
+            <div>
+              <ButtonData
+                bd=""
+                cl="white"
+                bg="#000269"
+                onClick={() => {
+                  setLogOut(null);
+                  navigate("/");
+                }}
+              >
+                Sign Out
+              </ButtonData>
+            </div>
+          ) : (
+            <div>
+              <NavHold>
+                {" "}
+                <Button bd="" cl="white" bg="#000269" to="/register">
+                  Get Started
+                </Button>
+                <Button bd="#000269" cl="black" bg="" to="/signin">
+                  Login
+                </Button>
+              </NavHold>
+            </div>
+          )}
+          <Menu onClick={toggleSideBar}>
+            <AiOutlineMenuFold />
+          </Menu>
+          {sideShow ? <SideBarComp /> : null}
+        </Container>
+      ) : (
+        <Container bx="">
+          <Div>
+            <Logo src="/assets/logo.png" />
+            {user ? (
+              <Div1>
+                {" "}
+                <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
+                  View Organisations
+                </Button>
+                {token?.superAdmin ? (
+                  <div>
+                    <Button
+                      bd="#000269"
+                      cl="#000269"
+                      bg=""
+                      to="/createOrganisation"
+                    >
+                      Create Organisations
+                    </Button>
+                    <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
+                      Add Candidates
+                    </Button>
+                  </div>
+                ) : null}
+                <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
+                  Cast your Vote
+                </Button>
+              </Div1>
             ) : null}
           </Div>
 
@@ -72,6 +144,7 @@ const Header = () => {
                 bg="#000269"
                 onClick={() => {
                   setLogOut(null);
+                  navigate("/");
                 }}
               >
                 Sign Out
@@ -90,64 +163,12 @@ const Header = () => {
               </NavHold>
             </div>
           )}
-        </Container>
-      ) : (
-        <Container bx="">
-          <Div>
-            <Logo src="/assets/logo.png" />
-            {user ? (
-              <Div>
-                {" "}
-                <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
-                  View Organisations
-                </Button>
-                {token?.superAdmin ? (
-                  <div>
-                    <Button
-                      bd="#000269"
-                      cl="#000269"
-                      bg=""
-                      to="/createOrganisation"
-                    >
-                      Create Organisations
-                    </Button>
-                    <Button bd="#000269" cl="#000269" bg="" to="/addCandidate">
-                      Add Candidates
-                    </Button>
-                  </div>
-                ) : null}
-                <Button bd="#000269" cl="#000269" bg="" to="/votePoll">
-                  Cast your Vote
-                </Button>
-              </Div>
-            ) : null}
-          </Div>
-          {user ? (
-            <div>
-              <ButtonData
-                bd=""
-                cl="white"
-                bg="#000269"
-                onClick={() => {
-                  setLogOut(null);
-                }}
-              >
-                Sign Out
-              </ButtonData>
-            </div>
-          ) : (
-            <div>
-              <NavHold>
-                {" "}
-                <Button bd="" cl="white" bg="#000269" to="/register">
-                  Get Started
-                </Button>
-                <Button bd="#000269" cl="black" bg="" to="/signin">
-                  Login
-                </Button>
-              </NavHold>
-            </div>
-          )}
+
+          <Menu onClick={toggleSideBar}>
+            <AiOutlineMenuFold />
+          </Menu>
+
+          {sideShow ? <SideBarComp /> : null}
         </Container>
       )}
     </>
@@ -156,6 +177,24 @@ const Header = () => {
 
 export default Header;
 
+const Menu = styled.div`
+  display: none;
+
+  @media screen and (max-width: 960px) {
+    display: block;
+    margin-right: 30px;
+    font-size: 30px;
+  }
+`;
+
+const Div1 = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 960px) {
+    display: none;
+  }
+`;
 const Div = styled.div`
   display: flex;
   align-items: center;
@@ -178,7 +217,6 @@ const Logo = styled.img`
   margin-left: 50px;
   object-fit: contain;
   color: black;
-  margin-right: 20px;
 
   @media screen and (max-width: 600px) {
     margin-left: 10px;
@@ -191,6 +229,7 @@ const NavHold = styled.div`
 
   @media screen and (max-width: 600px) {
     margin-right: 10px;
+    display: none;
   }
 `;
 
@@ -219,6 +258,7 @@ const Button = styled(Link)<{ bg: string; cl: string; bd: string }>`
   @media screen and (max-width: 600px) {
     width: 100px;
     font-size: 12px;
+    display: none;
   }
 `;
 
@@ -244,6 +284,10 @@ const ButtonData = styled.div<{ bg: string; cl: string; bd: string }>`
   @media screen and (max-width: 600px) {
     width: 100px;
     font-size: 12px;
+  }
+
+  @media screen and (max-width: 960px) {
+    display: none;
   }
 `;
 const Nav = styled.div`
