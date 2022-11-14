@@ -12,10 +12,15 @@ import LoadingState from "../../../LoadingState";
 import Swal from "sweetalert2";
 import { useRecoilValue } from "recoil";
 import jwt from "jwt-decode";
-import { users } from "../../Global/GlobalState";
+import { presidentVote, users } from "../../Global/GlobalState";
 import Rating from "./Rating";
 
+// const url: string = "https://hercall2.herokuapp.com";
 const url: string = "http://localhost:2233";
+
+interface Dimensions {
+  x: any;
+}
 
 const YouthCondinator = () => {
   const sortData = (props: any) => {
@@ -30,7 +35,7 @@ const YouthCondinator = () => {
 
   const [isActive, setIsActive] = React.useState<boolean>(false);
   const [loading, setLoading] = React.useState<boolean>(false);
-
+  const voters = useRecoilValue(presidentVote);
   const [presy, setPresy] = useState([]);
 
   const schema = yup.object().shape({
@@ -53,10 +58,12 @@ const YouthCondinator = () => {
   }
 
   let id: string | undefined;
+
   if (user) {
     let data: iData = jwt(user.getToken);
     id = data?._id;
   }
+
   const voteNow = handleSubmit(async (data) => {
     const { voterID } = data;
 
@@ -108,7 +115,7 @@ const YouthCondinator = () => {
     const newURL = `${url}/api/president/view`;
     await axios.get(newURL).then((res) => {
       setPresy(res.data.data.sort(sortData("voter")));
-      console.log(presy);
+      // console.log(presy);
     });
   };
 
@@ -127,21 +134,18 @@ const YouthCondinator = () => {
               <IoIosArrowDropdownCircle />
             </span>
           </Catcon>
-          <Top>Leading Candidate</Top>
+          <Top>Leading Candidates</Top>
           <Sin>
             {presy.map((props: any, i) => (
               <div key={props._id}>
+                {Number(voters * 20).toPrecision()}
                 {i < 2 ? (
                   <TopCon>
                     <ImgCon src={props.image} />
                     <Namepo>
                       {props.fullName}
                       <Loading>
-                        <Dbar1
-                          w={`${(
-                            <Rating voter={props.voter} _id={props._id} />
-                          )}px`}
-                        />
+                        <Dbar1 w={`${Number(voters * 20).toPrecision()}px`} />
                         <pre style={{ display: "flex" }}>
                           {<Rating voter={props.voter} _id={props._id} />}%
                         </pre>
@@ -214,13 +218,14 @@ const Sin = styled.div`
 
 const Button = styled.button`
   width: 100px;
-  height: 30px;
-  background-color: #050794;
+  height: 40px;
+  background-color: #000269;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 3px;
   font-weight: 600;
   cursor: pointer;
+  font-family: Poppins;
 `;
 
 const Label = styled.label`
@@ -293,6 +298,7 @@ const Top = styled.div`
   width: 100%;
   font-weight: 500;
   color: #fbaf1b;
+  font-size: 12px;
 `;
 
 const Catcon = styled.div`
@@ -313,14 +319,14 @@ const TopCon = styled.div`
 const Mydrop = styled.div`
   padding: 10px;
   background-color: white;
-  font-width: 700;
-  use-select: none;
+  font-weight: 700;
+  /* use-select: none; */
   color: #333;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transtion: all 500ms;
+  transition: all 500ms;
   flex-direction: column;
   animation: sweep 0.5s ease-in-out;
 
@@ -342,7 +348,7 @@ const Mydrop = styled.div`
 
 const DropItem = styled.div`
   padding: 10px;
-  transtion: all 0.2s;
+  transition: all 0.2s;
   display: flex;
 
   :hover {
@@ -370,12 +376,12 @@ const DropCon = styled.div`
   top: 110%;
   padding: 9px;
   background-color: whitesmoke;
-  font-width: 700;
+  font-weight: 700;
   color: #333;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   left: 0;
   width: 94%;
-  transtion: all 500ms;
+  transition: all 500ms;
 
   animation: sweep 0.5s ease-in-out;
 

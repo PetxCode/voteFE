@@ -7,6 +7,7 @@ interface props {
 
   _id: string;
 }
+// const url: string = "https://hercall2.herokuapp.com";
 const url: string = "http://localhost:2233";
 
 const NewFunction: React.FC<props> = ({ _id }) => {
@@ -20,6 +21,7 @@ const NewFunction: React.FC<props> = ({ _id }) => {
     });
   };
 
+  console.log(orgMember);
   useEffect(() => {
     getOrganisationMembers();
   }, []);

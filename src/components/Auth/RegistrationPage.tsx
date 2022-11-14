@@ -19,8 +19,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import logo from "./NYCN.png";
 import axios from "axios";
 import LoadingState from "../../LoadingState";
+import { error } from "console";
 
-const url = "http://localhost:2233";
+// const url: string = "https://hercall2.herokuapp.com";
+const url: string = "http://localhost:2233";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
@@ -74,6 +76,8 @@ const RegistrationPage = () => {
     await axios
       .post(newURL, formData, options)
       .then((res) => {
+        console.log("view Data: ", res);
+
         if (res.data.message.http_code === 400) {
           Swal.fire({
             position: "center",
@@ -82,11 +86,11 @@ const RegistrationPage = () => {
             showConfirmButton: false,
             timer: 3500,
           });
-        } else if (res.data.message.split("r")[0] === "You can't ") {
+        } else if (res.data.message === "{}") {
           Swal.fire({
             position: "center",
             icon: "error",
-            title: `${res.data.message}`,
+            title: `Error`,
             showConfirmButton: false,
             timer: 4000,
           });

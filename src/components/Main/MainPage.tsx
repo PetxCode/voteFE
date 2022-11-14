@@ -10,7 +10,7 @@ import Footer from "../Components/Footer/Footer";
 
 const MainPage = () => {
   const [user, setUser] = useRecoilState(users);
-  console.log(user);
+
   return (
     <div>
       <Header />

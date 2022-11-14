@@ -37,7 +37,8 @@ const ForgetPassword = () => {
 
   const onSubmit = handleSubmit(async (value) => {
     console.log(value);
-    const url = "http://localhost:2233";
+    // const url: string = "https://hercall2.herokuapp.com";
+    const url: string = "http://localhost:2233";
     const newURL = `${url}/api/user/resetPassword`;
     setLoading(true);
     await axios

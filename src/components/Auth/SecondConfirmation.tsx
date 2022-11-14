@@ -14,13 +14,16 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 
 const SecondConfirmation = () => {
+  // const url: string = "https://hercall2.herokuapp.com";
   const url: string = "http://localhost:2233";
   const { id } = useParams();
+  console.log(id);
 
   const trigger = async () => {
     if (id) {
       const newURL = `${url}/api/user/${id}/token`;
       await axios.get(newURL);
+      console.log(newURL);
     }
   };
 

@@ -35,8 +35,8 @@ const Header = () => {
 
   let token: iUser | undefined;
 
-  if (user) {
-    token = jwt(user.getToken);
+  if (token !== undefined) {
+    token = jwt(user?.getToken);
   }
 
   return (
@@ -51,7 +51,7 @@ const Header = () => {
                 <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
                   Viewing Organisations
                 </Button>
-                {token?.superAdmin ? (
+                {user.superAdmin ? (
                   <Div>
                     <Button
                       bd="#000269"
@@ -112,9 +112,9 @@ const Header = () => {
               <Div1>
                 {" "}
                 <Button bd="#000269" cl="#000269" bg="" to="/viewOrganisation">
-                  View Organisations
+                  Viewing Organisations
                 </Button>
-                {token?.superAdmin ? (
+                {user.superAdmin ? (
                   <Div>
                     <Button
                       bd="#000269"

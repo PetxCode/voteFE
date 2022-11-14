@@ -21,7 +21,8 @@ import axios from "axios";
 import LoadingState from "../../LoadingState";
 import { users } from "../Global/GlobalState";
 
-const url = "http://localhost:2233";
+// const url: string = "https://hercall2.herokuapp.com";
+const url: string = "http://localhost:2233";
 
 const SigninPage = () => {
   const [user, setUser] = useRecoilState(users);

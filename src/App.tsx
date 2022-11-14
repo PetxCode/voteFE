@@ -44,9 +44,9 @@ const App: React.FC = () => {
           <Route
             path="/createOrganisation"
             element={
-              <MainPrivateRoute>
-                <CreateOrganisation />
-              </MainPrivateRoute>
+              // <MainPrivateRoute>
+              <CreateOrganisation />
+              // </MainPrivateRoute>
             }
           />
 

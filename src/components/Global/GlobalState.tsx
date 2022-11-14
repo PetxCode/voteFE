@@ -47,3 +47,9 @@ export const candidate = atom({
   default: [] as Array<iOrganisation> | null,
   effects_UNSTABLE: [persistAtom],
 });
+
+export const presidentVote = atom({
+  key: "presidentVote",
+  default: 0,
+  effects_UNSTABLE: [persistAtom],
+});

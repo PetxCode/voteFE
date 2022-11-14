@@ -14,7 +14,7 @@ interface iUser {
   _id: string;
 }
 
-const url = "http://localhost:2233";
+const url: string = "https://hercall2.herokuapp.com";
 
 const AddCandidates = () => {
   const [cand, setCand] = useRecoilState(candidate);

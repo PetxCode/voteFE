@@ -20,7 +20,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import LoadingState from "../../LoadingState";
 
-const url = "http://localhost:2233";
+// const url: string = "https://hercall2.herokuapp.com";
+const url: string = "http://localhost:2233";
 
 const CreateOrganisation = () => {
   const navigate = useNavigate();

@@ -21,7 +21,7 @@ const Poll = () => {
             <YouthCondinator />
           </Scrollmy>
         </PollCon>
-
+        {/* 
         <PollCon>
           <Polltitle>
             &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
@@ -91,7 +91,7 @@ const Poll = () => {
           <Scrollmy>
             <YouthCondinator />
           </Scrollmy>
-        </PollCon>
+        </PollCon> */}
       </Wrapper>
     </Container>
   );
@@ -253,7 +253,7 @@ const Polltitle = styled.div`
   width: 100%;
   color: white;
   height: 50px;
-  background-color: #050794;
+  background-color: #000269;
   font-weight: 700;
   border-radius: 10px 10px 0px 0px;
   display: flex;
