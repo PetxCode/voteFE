@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import { io } from "socket.io-client";
+import { io, Socket } from "socket.io-client";
 
-const socket = io("https://authtestdb.herokuapp.com");
+// const socket = io("https://authtestdb.herokuapp.com");
 const url: string = "https://authtestdb.herokuapp.com";
 
 // const url: string = "http://localhost:2233";
-// const socket = io("http://localhost:2233");
+const socket: Socket = io("http://localhost:2233");
 
 interface iRating {
   voter?: [];

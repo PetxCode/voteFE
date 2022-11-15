@@ -6,7 +6,16 @@ import ChartHold from "./ChartHold";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+import { io } from "socket.io-client";
+
+const socket = io("http://localhost:2233");
+
+// const socket = io("https://authtestdb.herokuapp.com");
+
+// const url: string = "http://localhost:2233";
+
 const url: string = "https://authtestdb.herokuapp.com";
+
 const VoteScreen = () => {
   const [org, setOrg] = useState([]);
   const [can, setCan] = useState([]);

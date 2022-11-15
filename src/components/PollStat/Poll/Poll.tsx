@@ -158,7 +158,7 @@ const TopCon = styled.div`
 
 const DropItem = styled.div`
   padding: 10px;
-  transtion: all 0.2s;
+  transition: all 0.2s;
 
   :hover {
     background-color: #f4f4f4;
@@ -174,12 +174,12 @@ const DropCon = styled.div`
   top: 110%;
   padding: 17px;
   background-color: whitesmoke;
-  font-width: 700;
+  font-weight: 700;
   color: #333;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   left: 0;
   width: 94%;
-  transtion: all 500ms;
+  transition: all 500ms;
 
   animation: sweep 0.5s ease-in-out;
 
@@ -202,14 +202,13 @@ const DropCon = styled.div`
 const Mydrop = styled.summary`
   padding: 10px;
   background-color: white;
-  font-width: 700;
-  use-select: none;
+  font-weight: 700;
   color: #333;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transtion: all 500ms;
+  transition: all 500ms;
   flex-direction: column;
   animation: sweep 0.5s ease-in-out;
 
