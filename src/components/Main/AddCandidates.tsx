@@ -14,7 +14,7 @@ interface iUser {
   _id: string;
 }
 
-const url: string = "https://hercall2.herokuapp.com";
+const url: string = "https://authtestdb.herokuapp.com";
 
 const AddCandidates = () => {
   const [cand, setCand] = useRecoilState(candidate);
@@ -32,11 +32,11 @@ const AddCandidates = () => {
   const [searchUserData, setSearchUserData] = useState({} as iUser);
 
   const getUser = async () => {
-    const newURL = `${url}/api/user/word/start?email=gbemibukky@gmail.com`;
     await axios
-      .get(`http://localhost:2233/api/user/word/start?fullName=${searchUser}`)
+      .get(`${url}/api/user/word/start?fullName=${searchUser}`)
       .then((res) => {
         setSearchUserData(res.data.data);
+        console.log(searchUser, searchUserData);
       });
   };
 
@@ -419,6 +419,7 @@ const AddCandidates = () => {
               Legal
             </PathRoute>
           </Path>
+
           {pres ? (
             <div>
               <Search>
@@ -621,7 +622,9 @@ const AddCandidates = () => {
                 <User>No User Found</User>
               )}
             </div>
-          ) : null}
+          ) : (
+            <div>Hello</div>
+          )}
           <br />
           <br />
           <br />

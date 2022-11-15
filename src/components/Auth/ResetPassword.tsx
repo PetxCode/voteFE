@@ -21,7 +21,7 @@ import axios from "axios";
 import LoadingState from "../../LoadingState";
 
 // const url: string = "https://hercall2.herokuapp.com";
-const url: string = "http://localhost:2233";
+const url: string = "https://authtestdb.herokuapp.com";
 
 const ResetPassword = () => {
   const { id, token } = useParams();

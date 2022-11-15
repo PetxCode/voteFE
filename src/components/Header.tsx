@@ -44,7 +44,9 @@ const Header = () => {
       {show ? (
         <Container bx="rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
           <Div>
-            <Logo src="/assets/logo.png" />
+            <Link to="/">
+              <Logo src="/assets/logo.png" />
+            </Link>
             {user ? (
               <Div1>
                 {" "}
@@ -107,7 +109,9 @@ const Header = () => {
       ) : (
         <Container bx="">
           <Div>
-            <Logo src="/assets/logo.png" />
+            <Link to="/">
+              <Logo src="/assets/logo.png" />
+            </Link>
             {user ? (
               <Div1>
                 {" "}

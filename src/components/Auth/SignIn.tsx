@@ -22,7 +22,7 @@ import LoadingState from "../../LoadingState";
 import { users } from "../Global/GlobalState";
 
 // const url: string = "https://hercall2.herokuapp.com";
-const url: string = "http://localhost:2233";
+const url: string = "https://authtestdb.herokuapp.com";
 
 const SigninPage = () => {
   const [user, setUser] = useRecoilState(users);
@@ -52,6 +52,8 @@ const SigninPage = () => {
       .post(newURL, value)
       .then((res) => {
         setUser(res.data.data);
+
+        // if(res.data.)
         Swal.fire({
           position: "center",
           icon: "success",
@@ -64,12 +66,13 @@ const SigninPage = () => {
         setLoading(false);
       })
       .catch((error) => {
+        console.log(error);
         Swal.fire({
           position: "center",
           icon: "success",
-          title: `Login unsuccessful: ${error}`,
+          title: `Login unsuccessful: \n ${error.response.data.message}`,
           showConfirmButton: false,
-          timer: 2500,
+          timer: 3500,
         }).then(() => {
           // navigate("/");
         });

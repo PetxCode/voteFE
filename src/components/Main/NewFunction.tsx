@@ -8,7 +8,7 @@ interface props {
   _id: string;
 }
 // const url: string = "https://hercall2.herokuapp.com";
-const url: string = "http://localhost:2233";
+const url: string = "https://authtestdb.herokuapp.com";
 
 const NewFunction: React.FC<props> = ({ _id }) => {
   const [orgMember, setOrgMember] = useState([]);

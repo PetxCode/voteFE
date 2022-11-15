@@ -22,7 +22,7 @@ import LoadingState from "../../LoadingState";
 import { error } from "console";
 
 // const url: string = "https://hercall2.herokuapp.com";
-const url: string = "http://localhost:2233";
+const url: string = "https://authtestdb.herokuapp.com";
 
 const RegistrationPage = () => {
   const navigate = useNavigate();
@@ -86,11 +86,11 @@ const RegistrationPage = () => {
             showConfirmButton: false,
             timer: 3500,
           });
-        } else if (res.data.message === "{}") {
+        } else if (Object.keys(res.data.message).length === 0) {
           Swal.fire({
             position: "center",
             icon: "error",
-            title: `Error`,
+            title: `Error: Registeration failed, Please upload your image`,
             showConfirmButton: false,
             timer: 4000,
           });
@@ -112,7 +112,7 @@ const RegistrationPage = () => {
         Swal.fire({
           position: "center",
           icon: "error",
-          title: `Error Occur: ${error}`,
+          title: `Error Occur: ${error.response.data.message}`,
           showConfirmButton: false,
           timer: 2500,
         }).then(() => {

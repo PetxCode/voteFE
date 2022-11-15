@@ -14,10 +14,12 @@ import { useRecoilValue } from "recoil";
 import jwt from "jwt-decode";
 import { presidentVote, users } from "../../Global/GlobalState";
 import Rating from "./Rating";
+import BarGraph from "../Bar";
 
 // const url: string = "https://hercall2.herokuapp.com";
-const url: string = "http://localhost:2233";
+// const url: string = "http://localhost:2233";
 
+const url: string = "https://authtestdb.herokuapp.com";
 interface Dimensions {
   x: any;
 }
@@ -138,16 +140,21 @@ const YouthCondinator = () => {
           <Sin>
             {presy.map((props: any, i) => (
               <div key={props._id}>
-                {Number(voters * 20).toPrecision()}
                 {i < 2 ? (
                   <TopCon>
                     <ImgCon src={props.image} />
                     <Namepo>
                       {props.fullName}
                       <Loading>
-                        <Dbar1 w={`${Number(voters * 20).toPrecision()}px`} />
+                        <Dbar1
+                          w={`${(
+                            <Rating voter={props.voter} _id={props._id} />
+                          )}px`}
+                        />
                         <pre style={{ display: "flex" }}>
-                          {<Rating voter={props.voter} _id={props._id} />}%
+                          <BarGraph show voter={props.voter} _id={props._id} />
+                          {<BarGraph num voter={props.voter} _id={props._id} />}
+                          %
                         </pre>
                       </Loading>
                     </Namepo>

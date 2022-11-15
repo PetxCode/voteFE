@@ -3,8 +3,42 @@ import { FaChalkboardTeacher } from "react-icons/fa";
 import { CgOrganisation } from "react-icons/cg";
 import { MdHowToVote } from "react-icons/md";
 import ChartHold from "./ChartHold";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
+const url: string = "https://authtestdb.herokuapp.com";
 const VoteScreen = () => {
+  const [org, setOrg] = useState([]);
+  const [can, setCan] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  const fetchOrg = async () => {
+    const newURL: string = `${url}/api/organisation`;
+    await axios.get(newURL).then((res) => {
+      setOrg(res.data.data);
+    });
+  };
+
+  const fetchUsers = async () => {
+    const newURL: string = `${url}/api/user`;
+    await axios.get(newURL).then((res) => {
+      setUsers(res.data.data);
+    });
+  };
+
+  const fetchCan = async () => {
+    const newURL: string = `${url}/api/president/view/candidate`;
+    await axios.get(newURL).then((res) => {
+      setCan(res.data.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchOrg();
+    fetchCan();
+    fetchUsers();
+  }, []);
+
   return (
     <Container>
       <Wrapper>
@@ -18,21 +52,21 @@ const VoteScreen = () => {
             <IconHold bg="#000269">
               <CgOrganisation color="#fff" />
             </IconHold>
-            <span> 55 </span>
-            <small>Total Organisation</small>
+            <span> {org.length} </span>
+            <small>Total Organisations</small>
           </InnerBox>
           <InnerBox>
             <IconHold bg="green">
               <MdHowToVote color="#fff" />
             </IconHold>
-            <span> 21 </span>
+            <span> {can.length} </span>
             <small>Total Candidates</small>
           </InnerBox>
           <InnerBox>
             <IconHold bg="red">
               <FaChalkboardTeacher color="#fff" />
             </IconHold>
-            <span> 125 </span>
+            <span> {users.length} </span>
             <small>Total Delegates</small>
           </InnerBox>
         </TopBox>
