@@ -3,11 +3,8 @@ import styled from "styled-components";
 import axios from "axios";
 import { io, Socket } from "socket.io-client";
 
-// const socket = io("https://authtestdb.herokuapp.com");
 const url: string = "https://authtestdb.herokuapp.com";
-
-// const url: string = "http://localhost:2233";
-const socket: Socket = io("http://localhost:2233");
+const socket: Socket = io("https://authtestdb.herokuapp.com");
 
 interface iRating {
   voter?: [];
@@ -32,13 +29,10 @@ const BarGraph: React.FC<iRating> = ({ voter, _id, show, num }) => {
     const newURL = `${url}/api/presVote/president/view`;
     console.log(newURL);
     await axios.get(newURL).then((res) => {
-      //   setGetData(res.data.data.voter);
       setGetData(res.data.data.length);
     });
   };
 
-  //   const [show, setShow] = useState(false)
-  console.log(getData);
   useEffect(() => {
     fetchData();
     fetchDataData();

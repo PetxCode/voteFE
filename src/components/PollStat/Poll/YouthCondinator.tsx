@@ -117,7 +117,7 @@ const YouthCondinator = () => {
     const newURL = `${url}/api/president/view`;
     await axios.get(newURL).then((res) => {
       setPresy(res.data.data.sort(sortData("voter")));
-      // console.log(presy);
+      console.log(presy);
     });
   };
 

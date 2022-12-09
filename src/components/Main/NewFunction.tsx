@@ -7,7 +7,7 @@ interface props {
 
   _id: string;
 }
-// const url: string = "https://hercall2.herokuapp.com";
+// const url: string = "http://localhost:2233";
 const url: string = "https://authtestdb.herokuapp.com";
 
 const NewFunction: React.FC<props> = ({ _id }) => {
@@ -15,13 +15,14 @@ const NewFunction: React.FC<props> = ({ _id }) => {
 
   const getOrganisationMembers = async () => {
     const newURL: string = `${url}/api/organisation/${_id}/view`;
+    console.log(newURL);
 
     await axios.get(newURL).then((res) => {
+      console.log(res);
       setOrgMember(res.data.data.user);
     });
   };
 
-  console.log(orgMember);
   useEffect(() => {
     getOrganisationMembers();
   }, []);

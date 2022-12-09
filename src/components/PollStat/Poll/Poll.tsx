@@ -21,7 +21,7 @@ const Poll = () => {
             <YouthCondinator />
           </Scrollmy>
         </PollCon>
-        {/* 
+
         <PollCon>
           <Polltitle>
             &nbsp; &nbsp; &nbsp; Asst.Co-ordinator Candidate.
@@ -30,7 +30,8 @@ const Poll = () => {
             <DeputyCordinator />
           </Scrollmy>
         </PollCon>
-        <PollCon>
+
+        {/*     <PollCon>
           <Polltitle>&nbsp; &nbsp; &nbsp;Socail Secretary.</Polltitle>
           <Scrollmy>
             <Generalsecretary />
